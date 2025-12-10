@@ -2,8 +2,8 @@ package action
 
 import (
 	"fmt"
-	"io/ioutil"
 	"log"
+	"os"
 	"strings"
 
 	"github.com/ProtonMail/go-crypto/openpgp"
@@ -59,7 +59,7 @@ func LoadAllowlistYAML(filePath string) (*AllowlistYAML, error) {
 		log.Println("No allowlist configured")
 		return &AllowlistYAML{}, nil
 	}
-	yfile, err := ioutil.ReadFile(filePath)
+	yfile, err := os.ReadFile(filePath)
 	if err != nil {
 		return nil, fmt.Errorf(`failed to read allowlist yaml configuration file at '%s': %w`, filePath, err)
 	}

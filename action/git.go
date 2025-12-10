@@ -2,7 +2,7 @@ package action
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 
 	git "github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing"
@@ -43,7 +43,7 @@ func PrettyPrintCommit(commit *object.Commit) string {
 		panic(err)
 	}
 
-	bs, err := ioutil.ReadAll(r)
+	bs, err := io.ReadAll(r)
 	if err != nil {
 		panic(err)
 	}
@@ -65,7 +65,7 @@ func EncodedCommitWithoutSignature(commit *object.Commit) (string, error) {
 		return "", fmt.Errorf("failed to build reader: %w", err) // should never happen
 	}
 
-	encoded, err := ioutil.ReadAll(r)
+	encoded, err := io.ReadAll(r)
 	if err != nil {
 		return "", fmt.Errorf("failed to read from encoding: %w", err) // should never happen
 	}

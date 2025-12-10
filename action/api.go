@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"path"
@@ -58,7 +58,7 @@ func (a Authorization) PrettyPrint() string {
 	return string(bs)
 }
 
-//	GPGKey contains the GPG public key.
+// GPGKey contains the GPG public key.
 type GPGKey struct {
 	// ID is the Beyond Identity ID of the GPG key.
 	ID string `json:"id"`
@@ -96,7 +96,7 @@ func (c APIClient) GetAuthorization(ctx context.Context, keyID, committerEmail s
 	}
 
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read api response: %w", err)
 	}

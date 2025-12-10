@@ -4,8 +4,6 @@
 linters:
   disable-all: true
   enable:
-    - deadcode
-    - depguard
     - dogsled
     - errcheck
     - gofmt
