@@ -1,7 +1,7 @@
 ARG VERSION
 FROM auth-commit-sig-builder:${VERSION} as builder
 
-FROM docker.io/library/debian:11.2-slim@sha256:125f346eac7055d8e1de1b036b1bd39781be5bad3d36417c109729d71af0cd73
+FROM docker.io/library/debian:12-slim@sha256:e899040a73d36e2b36fa33216943539d9957cba8172b858097c2cabcdb20a3e2
 
 RUN apt-get update && \
     apt-get upgrade -y && \
